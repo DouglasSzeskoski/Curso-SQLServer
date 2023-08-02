@@ -15,6 +15,26 @@
        
 <h5>Comandos</h5>
 
+        DDL
+              CREATE DATABASE nomebanco;
+              CREATE TABLE nometabela;
+              ALTER TABLE nometabela ADD nome INT;
+              DROP TABLE nometabela;       
+              
+        DML
+              INSERT into [nometabela] (campo1, …) values (dado1, …);              
+              UPDATE nometabela SET campo1 = 'dado1' WHERE id = dado2;              
+              DELETE FROM nometabela;              
+              SELECT * FROM nometabela;              
+              SELECT dado1, dado2 FROM nometabela;       
+              
+        DCL       
+              GRANT SELECT, INSERT, UPDATE ON nometabela TO nomeusuario;              
+              REVOKE SELECT ON nometabela FROM  nomeusuario;
+              DENY SELECT ON nometabela TO nomeusuario;
+
+
+       BEGIN TRAN ...... COMMIT TRAN - tudo  que esta entre o begin e o commit será executado de uma unica vez evitando perder parcialmente as querys (os dados podem ser visualizados localmente)
 
 <h5>Segurança</h5>
 
