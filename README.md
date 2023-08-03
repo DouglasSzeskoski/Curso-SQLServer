@@ -8,7 +8,13 @@
        Query - Solicitação de informações a um banco de dados (consulta)
        Procedures - São rotinas/processos que são definidos e podem ser chamados pelo seu nome
        Concatenar - Juntar dados (EX: nome + '(espaço)' + sobrenome) vai resultar em nome sobrenome
-
+       Views - usado para reaproveitar SELECT facilitando uma proxima consulta, deixando as informações mais seguras e simples, disponibilizando somente o necessario para aquela informação 
+       Procedures - São procedimentos armazenados, onde são passados procedimentos a serem realizados diretamente no SQL 
+       Cast/Convert - função usada para converter valores de uma variavel
+       Output - ao declarar uam variavel e usarmos essa função, após o termino dos codigos digitados será retornado o valor desta variavel
+       @@ROWCOUNT - função que retorna a quantidade de linhas que foram afetadas após um SELECT
+       TRY Catch - função usada para informar o usuario em caso de erro , a função irá no TRY e a msg de erro no catch caso o try nao seja exec
+       
        system DataBase - master - coração onde contém todas as informações vitais (necessita de backup)
        system DataBase - model - contém modelos de DB, estruturas de tabelas internas, parametros basicos ("modelo") (backup opcional como é somente um modelo)
        system DataBase - msdb - contém as tabelas dos dados do Server Agent (jobs, logs e etc) (necessita de backup)
@@ -82,14 +88,38 @@
                                                         ********   SQL SELECT INTO  ********
 
                      SELECT * INTO NovoNomeTabela FROM (...) WHERE (...) = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
+
                      
-             
+                                                               ********  VIEWS  ********
               
+              CREATE VIEW (...) AS SELECT * FROM (...) WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
+              SELECT * FROM (nomedaview) - retorna os dados somente dessa view
+              CREATE OR ALTER VIEW (...) AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM (...) podendo usar JOIN's
               
+                                                           
+
               
-              
-              
-              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               
               GRANT SELECT, INSERT, UPDATE ON nometabela TO nomeusuario;      -
               REVOKE SELECT ON nometabela FROM  nomeusuario;                  -
