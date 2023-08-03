@@ -21,6 +21,7 @@
        Functions - Reutilizar por exemplo calculos que vamos usar muitas vezes, ou uma consulta, para isso criamos uma função onde so vamos precisar chama-la 
        BEGIN TRAN .. COMMIT TRAN - tudo  que esta entre o begin e o commit será executado de uma unica vez evitando perder parcialmente as querys (os dados podem ser visualizados localmente)
        GETDATE() - função para coletar a data e hora atual
+       LIKE - utilizado para buscar por uma determinada string dentro de um campo com valores textuais.
        @nomevariavel - variaveis locais
        @@nomevariavel - variaveis globais
        
