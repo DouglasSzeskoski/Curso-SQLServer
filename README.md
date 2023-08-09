@@ -8,7 +8,6 @@
        - Query - Solicitação de informações a um banco de dados (consulta)
        - Procedures - São rotinas/processos que são definidos e podem ser chamados pelo seu nome
        - Concatenar - Juntar dados (EX: nome + '(espaço)' + sobrenome) vai resultar em nome sobrenome
-       - Views - usado para reaproveitar SELECT facilitando uma proxima consulta, deixando as informações mais seguras e simples, disponibilizando somente o necessario para aquela informação 
        - Procedures - São procedimentos armazenados, onde são passados procedimentos a serem realizados diretamente no SQL 
        - Cast/Convert - função usada para converter valores de uma variavel
        - Output - ao declarar uam variavel e usarmos essa função, após o termino dos codigos digitados será retornado o valor desta variavel
@@ -89,26 +88,27 @@
 
 ***SQL UNION***                 ---------->(realiza  a junção das colunas desejadas desde que possuam a mesma quantidade e tipo de dados)
 
-              SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - criará uma coluna chamado "type" onde terá o valor cliente, e a coluna nomecompleto onde esta a junção nome+sobrenome
-              SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] UNION SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - irá colocar a tabela fornecedor pós o cliente
+      - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - criará uma coluna chamado "type" onde terá o valor cliente, e a coluna nomecompleto onde esta a junção nome+sobrenome
+      - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] UNION SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - irá colocar a tabela fornecedor pós o cliente
 
-***SQL HAVING***
+***SQL HAVING***                 ---------->(usado para filtar o resultado de um agrupamento)
 
-              SELECT (..), COUNT(ID) AS quant FROM (..) WHERE [...] <> 'BRASIL' GROUP BY [...]  HAVING COUNT (ID) =>9 
+      - SELECT (..), COUNT(ID) AS quant FROM (..) WHERE [...] <> 'BRASIL' GROUP BY [...]  HAVING COUNT (ID) =>9 
                      - se executarmos a pesquisa ate o GROUP será feito a contagem e junção de todos os paises DIFERENTES de Brasil, e a função do HAVING e filtrar para aparecer somente paises com numero >= 9  
+      - SELECT (campo1), SUM(campo2) FROM (tabela1) GROUP BY (campo1) HAVING (condição)
 
-***SELECT INTO***
+***SELECT INTO***            ---------->(usado para inserir informações em uma tabela atraves de uma consulta)                
 
                      SELECT * INTO NovoNomeTabela FROM [...] WHERE [...] = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
 
                      
-***VIEWS***
+***VIEWS***                   ----------> (usado para reaproveitar SELECT facilitando uma proxima consulta, salvando determinada consulta)    
               
               CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
               SELECT * FROM (nomedaview) - retorna os dados somente dessa view
               CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
               
-***TRIGGER***
+***TRIGGER***                 ----------> (Uma forma de criar gatilho para determinda situações.   EX: backup, registro em log etc...)
 
               CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
               ALTER TABLE [...] ENABLE TRIGGER [...]- Comando necessario para ativar o TRIGGER
