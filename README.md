@@ -99,34 +99,34 @@
 
 ***SELECT INTO***            ---------->(usado para inserir informações em uma tabela atraves de uma consulta)                
 
-                     SELECT * INTO NovoNomeTabela FROM [...] WHERE [...] = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
+      - SELECT * INTO NovoNomeTabela FROM [...] WHERE [...] = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
 
                      
 ***VIEWS***                   ----------> (usado para reaproveitar SELECT facilitando uma proxima consulta, salvando determinada consulta)    
               
-              CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
-              SELECT * FROM (nomedaview) - retorna os dados somente dessa view
-              CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
+     - CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
+     - SELECT * FROM (nomedaview) - retorna os dados somente dessa view
+     - CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
               
 ***TRIGGER***                 ----------> (Uma forma de criar gatilho para determinda situações.   EX: backup, registro em log etc...)
 
-              CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
-              ALTER TABLE [...] ENABLE TRIGGER [...]- Comando necessario para ativar o TRIGGER
-              ALTER TABLE [...] DISABLE TRIGGER [...]- Comando necessario para desativar o TRIGGER 
-              ENABLE TRIGGER ALL ON [...] - ativa todas as TRIGGERS da tabela
-              DISABLE TRIGGER ALL ON [...] - desativa todas as TRIGGERS da tabela
-              SELECT * FROM sys.triggers WHERE TYPE = 'TR' - tabela do propio SQL que nos mostra todas as TRIGGERS que possuimos e em quais tabelas
-              DROP TRIGGER IF EXISTS [...]
+     - CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
+     - ALTER TABLE [...] ENABLE TRIGGER [...]- Comando necessario para ativar o TRIGGER
+     - ALTER TABLE [...] DISABLE TRIGGER [...]- Comando necessario para desativar o TRIGGER 
+     - ENABLE TRIGGER ALL ON [...] - ativa todas as TRIGGERS da tabela
+     - DISABLE TRIGGER ALL ON [...] - desativa todas as TRIGGERS da tabela
+     - SELECT * FROM sys.triggers WHERE TYPE = 'TR' - tabela do propio SQL que nos mostra todas as TRIGGERS que possuimos e em quais tabelas
+     - DROP TRIGGER IF EXISTS [...]
               
 ***FUNCTIONS***
 
-              CREATE FUNCTIONS nomefuncao( variaveis ) RETURNS (variavel) AS BEGIN RETURN (EX: variavel1 * variavel3 - variavel3) END; - Criando uma function
-              SELECT nomefuncao (variavel1, variavel2, variavel3) nomecoluna - Chamando a função e passando os parametros que serão usados na function o resultado sairá na coluna nomecoluna
+     - CREATE FUNCTIONS nomefuncao( variaveis ) RETURNS (variavel) AS BEGIN RETURN (EX: variavel1 * variavel3 - variavel3) END; - Criando uma function
+     - SELECT nomefuncao (variavel1, variavel2, variavel3) nomecoluna - Chamando a função e passando os parametros que serão usados na function o resultado sairá na coluna nomecoluna
 
   
 <H2>SEGURANÇA</h2>
 
-       Se mesmo com a senha do "sa", não estiver conseguindo abrir o banco deve-se permitir o acesso a essa porta pelo firewall do dc
+     - Se mesmo com a senha do "sa", não estiver conseguindo abrir o banco deve-se permitir o acesso a essa porta pelo firewall do dc
 
        GRANT - Atribui previlegios de acesso a objetos do banco de dados
        REVOK - Remove os previlegios de acesso aos objetos obtidos atraves do comando GRANT
