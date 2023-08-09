@@ -35,22 +35,22 @@
 
 ***CREATE***
                                    
-              CREATE DATABASE nomebanco;                                  - criar um BD
-              CREATE TABLE nometabela;                                    - criar uma tabela
+      - CREATE DATABASE nomebanco;                                  - criar um BD
+      - CREATE TABLE nometabela;                                    - criar uma tabela
 
 ***ALTER***  
                                    
-              ALTER TABLE nometabela ADD nome INT;                        - altera a tabela adicionando a coluna nome com valor INT
+      - ALTER TABLE nometabela ADD nome INT;                        - altera a tabela adicionando a coluna nome com valor INT
 
 ***DROP , DELETE***
                             
-              DROP TABLE nometabela;                                      - remover tabela
-              DELETE FROM nometabela;                                     - deletar tabela (não pode estar vinculada a um  atabela filha)
+      - DROP TABLE nometabela;                                      - remover tabela
+      - DELETE FROM nometabela;                                     - deletar tabela (não pode estar vinculada a um  atabela filha)
 
 ***INSERT , UPDATE***   
                             
-      INSERT into [nometabela] (campo1, …) values (dado1, …);     - inserir dados nos campos             
-      UPDATE nometabela SET campo1 = 'dado1' WHERE id = dado2;    - editar dados de um campo com restrições            
+      - INSERT into [nometabela] (campo1, …) values (dado1, …);     - inserir dados nos campos             
+      - UPDATE nometabela SET campo1 = 'dado1' WHERE id = dado2;    - editar dados de um campo com restrições            
 
 ***SELECT***
                                    
