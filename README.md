@@ -83,32 +83,32 @@
 
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
                      
-                      ********   RIGHT JOIN  (são todos os valores da segunda tabela + os valores comuns entre a primeira e a segunda)********
+***RIGHT JOIN***                ---------->(são todos os valores da segunda tabela + os valores comuns entre a primeira e a segunda)
 
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
-                       ********   SQL UNION  (realiza  a junção das colunas desejadas desde que possuam a mesma quantidade e tipo de dados)********
+***SQL UNION***                 ---------->(realiza  a junção das colunas desejadas desde que possuam a mesma quantidade e tipo de dados)
 
               SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - criará uma coluna chamado "type" onde terá o valor cliente, e a coluna nomecompleto onde esta a junção nome+sobrenome
               SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] UNION SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - irá colocar a tabela fornecedor pós o cliente
 
-                                                        ********   SQL HAVING  ********
+***SQL HAVING***
 
               SELECT (..), COUNT(ID) AS quant FROM (..) WHERE [...] <> 'BRASIL' GROUP BY [...]  HAVING COUNT (ID) =>9 
                      - se executarmos a pesquisa ate o GROUP será feito a contagem e junção de todos os paises DIFERENTES de Brasil, e a função do HAVING e filtrar para aparecer somente paises com numero >= 9  
 
-                                                        ********   SQL SELECT INTO  ********
+***SELECT INTO***
 
                      SELECT * INTO NovoNomeTabela FROM [...] WHERE [...] = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
 
                      
-                                                               ********  VIEWS  ********
+***VIEWS***
               
               CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
               SELECT * FROM (nomedaview) - retorna os dados somente dessa view
               CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
               
-                                                                 ********  TRIGGER  ********
+***TRIGGER***
 
               CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
               ALTER TABLE [...] ENABLE TRIGGER [...]- Comando necessario para ativar o TRIGGER
@@ -118,7 +118,7 @@
               SELECT * FROM sys.triggers WHERE TYPE = 'TR' - tabela do propio SQL que nos mostra todas as TRIGGERS que possuimos e em quais tabelas
               DROP TRIGGER IF EXISTS [...]
               
-                                                                 ********  FUNCTIONS  ********
+***FUNCTIONS***
 
               CREATE FUNCTIONS nomefuncao( variaveis ) RETURNS (variavel) AS BEGIN RETURN (EX: variavel1 * variavel3 - variavel3) END; - Criando uma function
               SELECT nomefuncao (variavel1, variavel2, variavel3) nomecoluna - Chamando a função e passando os parametros que serão usados na function o resultado sairá na coluna nomecoluna
