@@ -74,6 +74,10 @@
       - SELECT [...] FROM [...] WHERE campo1 IS NULL | IS NOT NULL  - todos os valores que possuam valor nulo | valores não nulos 
       - SELECT [...], COUNT (ID) FROM [...] GROUP BY [...]          - vai contar quantos ID possuem valores iguais 
 
+***SELF JOIN***        ----------> (é um metodo para se comparar itens da mesma tabela)
+                       
+       - SELECT A.coluna1, B.coluna1 FROM tabela1 A, tabela1 B WHERE A.informação = B.informação - irá retornar todos os campos (EX: todas pessoas que moram e tal região) 
+
 ***INNER JOIN  | JOIN***         ----------> (é a interseção entre duas tabelas ou seja, o que possui o mesmo valor em ambas)
                        
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
@@ -90,12 +94,13 @@
 
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
-***SQL UNION***                 ---------->(realiza  a junção das colunas desejadas desde que possuam a mesma quantidade e tipo de dados)
+***UNION***           ---------->(realiza a combinação dos resultados de um ou mais SELECT em apenas um, remove dados duplicados)
 
+      - SELECT coluna1(INT), coluna2(VARCHAR) FROM tabela1 UNION SELECT coluna1(INT), coluna2(VARCHAR) FROM tabela2
       - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - criará uma coluna chamado "type" onde terá o valor cliente, e a coluna nomecompleto onde esta a junção nome+sobrenome
       - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] UNION SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - irá colocar a tabela fornecedor pós o cliente
 
-***SQL HAVING***                 ---------->(usado para filtar o resultado de um agrupamento)
+***HAVING***                 ---------->(usado para filtar o resultado de um agrupamento)
 
       - SELECT (..), COUNT(ID) AS quant FROM (..) WHERE [...] <> 'BRASIL' GROUP BY [...]  HAVING COUNT (ID) =>9 
                      - se executarmos a pesquisa ate o GROUP será feito a contagem e junção de todos os paises DIFERENTES de Brasil, e a função do HAVING e filtrar para aparecer somente paises com numero >= 9  
