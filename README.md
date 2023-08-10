@@ -78,11 +78,15 @@
                        
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
 
-***LEFT JOIN***                 ----------> (são todos os valores da primeira tabela + os valores comuns entre a primeira e a segunda)
+***LEFT OUTER JOIN |LEFT JOIN***  ----------> (são todos os valores da primeira tabela + os valores comuns entre a primeira e a segunda)
 
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
-                     
-***RIGHT JOIN***                ---------->(são todos os valores da segunda tabela + os valores comuns entre a primeira e a segunda)
+
+***FULL OUTER JOIN |OUTER JOIN***    ----------> (Join mais completo, pois nos traz todos os valores de tabela, caso nao possua correspondentes ela traz o valor NULL para o valor.
+
+       - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk
+       
+***RIGHT OUTER JOIN |RIGHT JOIN***                ---------->(são todos os valores da segunda tabela + os valores comuns entre a primeira e a segunda)
 
        - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
