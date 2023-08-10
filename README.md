@@ -45,7 +45,7 @@
 ***DROP , DELETE***
                             
       - DROP TABLE nometabela;                                      - remover tabela
-      - DELETE FROM nometabela;                                     - deletar tabela (não pode estar vinculada a um  atabela filha)
+      - DELETE FROM nometabela;                                     - deletar tabela (não pode estar vinculada a uma tabela filha)
 
 ***INSERT , UPDATE***   
                             
@@ -132,7 +132,17 @@
      - CREATE FUNCTIONS nomefuncao( variaveis ) RETURNS (variavel) AS BEGIN RETURN (EX: variavel1 * variavel3 - variavel3) END; - Criando uma function
      - SELECT nomefuncao (variavel1, variavel2, variavel3) nomecoluna - Chamando a função e passando os parametros que serão usados na function o resultado sairá na coluna nomecoluna
 
-  
+***DATEPART***                 ----------> (Função usada para fragmentar uma data)
+     
+     - DATEPART ("year, day, month, minute, hour, etc....", coluna1)   
+     - Possibilidades (https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16)
+
+***OPERAÇÕES COM STRINGS***  ----------> ex: (LEN contagem de letras), (CONCAT concatenar)
+
+     - SELECT coluna1, SUBSTRING(coluna2, 1 - inicia de onde?, 5 -quantas letras?) FROM tabela - FILTAR LETRAS - irá filtrar 5 letras iniciando da primeira
+     - SELECT coluna1, REPLACE(coluna2, ' 1 ' - busca o caractere 1, ' 2 ' -Substitui por 2) FROM tabela - Substitui caracteres, nesse caso irá procurar o 1 e substituir por 2
+     - Possibilidades ([https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver16))
+
 <H2>SEGURANÇA</h2>
 
      - Se mesmo com a senha do "sa", não estiver conseguindo abrir o banco deve-se permitir o acesso a essa porta pelo firewall do dc
