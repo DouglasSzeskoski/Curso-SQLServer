@@ -1,5 +1,7 @@
 <h1>SQL/SQLServer</h1>
 
+       - DOCUMENTAÇÃO --------> https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver16
+
 <h2>DEFINIÇÕES</h2>
 
        - Domain Controller - Servidor onde armazena todas as informações dos usuarios 
