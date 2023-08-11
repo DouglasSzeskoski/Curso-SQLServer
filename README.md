@@ -18,6 +18,8 @@
        - Inserted - tabela temporaria propia do sql onde fica os dados que acabaram de ser inseridos (permitindo o uso do ROLLBACK)
        - Deleted - tabela temporaria propia do sql onde fica os dados que acabaram de ser deletados  (permitindo o uso do ROLLBACK)
        - Functions - Reutilizar por exemplo calculos que vamos usar muitas vezes, ou uma consulta, para isso criamos uma função onde so vamos precisar chama-la 
+       - Check Constraint - Usado para criar restrições de valores de uma tabela (EX: idade >= 18) 
+       - Unique - Usado para criar valores unicos em uma tabela, esse valor nao pode ser repetido
        - BEGIN TRAN .. COMMIT TRAN - tudo  que esta entre o begin e o commit será executado de uma unica vez evitando perder parcialmente as querys (os dados podem ser visualizados localmente)
        - GETDATE() - função para coletar a data e hora atual
        - LIKE - utilizado para buscar por uma determinada string dentro de um campo com valores textuais.
@@ -38,19 +40,25 @@
       - CREATE DATABASE nomebanco;                                  - criar um BD
       - CREATE TABLE nometabela;                                    - criar uma tabela
 
+***IDENTIFY***        ----------> (é um metodo para se auto incrementar um valor em uma tabela)
+
+      - CREATE TABLE nometabela
+      - (ID SMALLINT PRIMARY KEY IDENTITY (1 (valor inicial),1 (qtd incrementada)),
+
 ***ALTER***  
                                    
       - ALTER TABLE nometabela ADD nome INT;                        - altera a tabela adicionando a coluna nome com valor INT
 
 ***DROP , DELETE***
                             
-      - DROP TABLE nometabela;                                      - remover tabela
-      - DELETE FROM nometabela;                                     - deletar tabela (não pode estar vinculada a uma tabela filha)
+      - DROP TABLE nometabela;                                      - remover tabela (não pode estar vinculada a uma tabela filha)
+      - DELETE FROM nometabela WHERE condição;                      - deletar coluna 
+      - TRUNCATE TABLE nometabela;                                  - paga todos os dados da TABELA, mas as colunas permanecem (sem dados)
 
 ***INSERT , UPDATE***   
                             
       - INSERT into [nometabela] (campo1, …) values (dado1, …);     - inserir dados nos campos             
-      - UPDATE nometabela SET campo1 = 'dado1' WHERE id = dado2;    - editar dados de um campo com restrições            
+      - UPDATE nometabela SET campo1 = 'dado1', campo2 = 'dado2' WHERE condição;    - editar dados de um campo com restrições            
 
 ***SELECT***
                                    
