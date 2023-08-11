@@ -43,7 +43,7 @@
       - CREATE DATABASE nomebanco;                                  - criar um BD
       - CREATE TABLE nometabela;                                    - criar uma tabela
 
-***IDENTIFY***        ----------> (é um metodo para se auto incrementar um valor em uma tabela)
+***IDENTITY***        ----------> (é um metodo para se auto incrementar um valor em uma tabela)
 
       - CREATE TABLE nometabela
       - (ID SMALLINT PRIMARY KEY IDENTITY (1 (valor inicial),1 (qtd incrementada)),
