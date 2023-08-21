@@ -61,7 +61,8 @@
 ***INSERT , UPDATE***   
                             
       - INSERT into [nometabela] (campo1, …) values (dado1, …);     - inserir dados nos campos             
-      - UPDATE nometabela SET campo1 = 'dado1', campo2 = 'dado2' WHERE condição;    - editar dados de um campo com restrições            
+      - UPDATE nometabela SET campo1 = 'dado1', campo2 = 'dado2' WHERE condição;    - editar dados de um campo com restrições 
+      - UPDATE DAN set coluna1 = coluna2 FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk WHERE campo condição - fazer UPDATE de uma coluna atraves de um JOIN (sempre usar BEGIN TRANSACTION / COMMIT TRANSACTION)
 
 ***SELECT***
                                    
