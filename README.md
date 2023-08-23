@@ -128,7 +128,11 @@
      - CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
      - SELECT * FROM (nomedaview) - retorna os dados somente dessa view
      - CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
-              
+
+***PROCEDURES***              
+
+     - SELECT name, modify_date FROM sys.objects WHERE type = 'P' -- 'P' representa stored procedures AND name = 'nome_procedure'; -- verificar ultima atualização/modificação realizad ana procedure
+                 
 ***TRIGGER***                 ----------> (Uma forma de criar gatilho para determinda situações.   EX: backup, registro em log etc...)
 
      - CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
