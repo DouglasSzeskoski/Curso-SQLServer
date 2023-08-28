@@ -166,3 +166,15 @@
        GRANT - Atribui previlegios de acesso a objetos do banco de dados
        REVOK - Remove os previlegios de acesso aos objetos obtidos atraves do comando GRANT
        DENY  - Nega permissão a um usuario ou grupo para realizar operações a objetos
+
+
+<H2>ATALHOS</h2>
+
+    - F1 - abre o navegador para ajuda com o comando desejado 
+    - F2 - Renomear objetos/ tabelas/ views ....
+    - F3 - Proxima vez que aparece a palavra / Shift + F3 Retorna a busca pela palavra
+    - F4 - Exibe as propiedades
+    - F5 - Executa 
+    - F6 - Alterna entre os paineis 
+    - F7 - Exibe a janela object explorer / abre uma aba com os itens selecionados
+    - F8 - Abre e fecha a janela de object explorer
