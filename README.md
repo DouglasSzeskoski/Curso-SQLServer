@@ -159,6 +159,10 @@
      - SELECT coluna1, REPLACE(coluna2, ' 1 ' - busca o caractere 1, ' 2 ' -Substitui por 2) FROM tabela - Substitui caracteres, nesse caso irá procurar o 1 e substituir por 2
      - Possibilidades ([https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver16))
 
+***ROW_NUMBER***                 ----------> (Função usada para numerar um determinado resultado)
+     
+     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+
 <H2>SEGURANÇA</h2>
 
      - Se mesmo com a senha do "sa", não estiver conseguindo abrir o banco deve-se permitir o acesso a essa porta pelo firewall do dc
