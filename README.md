@@ -163,6 +163,15 @@
      
      - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
 
+***UNPIVOT***                 ----------> (Função usada para tranformar as colunas em linhas)
+     
+     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+
+***PIVOT***                 ----------> (Função usada para tranformar as colunas em linhas)
+     
+     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+
+
 <H2>SEGURANÇA</h2>
 
      - Se mesmo com a senha do "sa", não estiver conseguindo abrir o banco deve-se permitir o acesso a essa porta pelo firewall do dc
