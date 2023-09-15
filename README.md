@@ -171,6 +171,13 @@
      
      - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
 
+***CASE***                 ----------> (Função usada para avaliar uma lista de condiçoes e retornar uma  das opções)
+     
+       CASE
+         WHEN quando acontecer essa condição THEN entao sai esse resultado [ ...n ]
+        [ ELSE senao sai esse resultado ]
+       END
+
 
 <H2>SEGURANÇA</h2>
 
