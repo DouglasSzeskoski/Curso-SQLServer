@@ -60,22 +60,39 @@
 
 ***INSERT , UPDATE***   
                             
-      - INSERT into [nometabela] (campo1, …) values (dado1, …);     - inserir dados nos campos             
-      - UPDATE nometabela SET campo1 = 'dado1', campo2 = 'dado2' WHERE condição;    - editar dados de um campo com restrições 
-      - UPDATE DAN set coluna1 = coluna2 FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk WHERE campo condição - fazer UPDATE de uma coluna atraves de um JOIN (sempre usar BEGIN TRANSACTION / COMMIT TRANSACTION)
+      - INSERT into [nometabela] (campo1, …) 
+        VALUES (dado1, …);                          - inserir dados nos campos             
+      
+      - UPDATE nometabela 
+        SET campo1 = 'dado1', campo2 = 'dado2' 
+        WHERE condição;                             - editar dados de um campo com restrições 
+      
+      - UPDATE DAN set coluna1 = coluna2 
+        FROM tabela1 
+        INNER JOIN tabela2 ON tabela1.pk = tabela2.fk 
+        WHERE campo condição                        - fazer UPDATE de uma coluna atraves de um JOIN (sempre usar BEGIN TRANSACTION / COMMIT TRANSACTION)
 
 ***SELECT***
                                    
-      - SELECT * FROM nometabela;                                   - pesquisa de todos os dados  (evitar devido a perfomarce)
-      - SELECT campo1 FROM nometabela;                              - pesquisa as colunas selecionadas  
-      - SELECT campo1, campo2 FROM nometabela ORDER BY campo1       - pesquisa os dados e ordena conforme a campo1
-      - SELECT campo1, campo2 FROM nometabela ORDER BY campo1 DESC  - pesquisa os dados e ordena o campo1 de forma decrescente
-      - SELECT * FROM nometabela WHERE campo = valorx               - pesquisa todos os dados que possuam valorx
-      - SELECT TOP 10 * FROM nometabela                             - pesquisa os 10 primeiros valores da tabela
-      - SELECT DISTINCT campo1 FROM nometabela ORDER BY valorx      - apresenta somente 1 vez cada valor mesmo que alguns se repitam
-      - SELECT MIN (campo1) FROM tabela                             - apresenta o menor valor da coluna 
-      - SELECT MAX (campo1) FROM [tabela] WHERE campo1 = 'valorx'   - pesquisa o maior valor quando campo1 = valorx
-      - SELECT COUNT (campo1) FROM tabela                           - informa quantos linhas há no campo1
+      - SELECT * (campo)
+        FROM nometabela;                             - pesquisa de todos os dados  (evitar devido a perfomarce)
+        
+
+      - SELECT TOP 10 * 
+        FROM nometabela                             - pesquisa os 10 primeiros valores da tabela
+        
+      - SELECT DISTINCT campo1 
+        FROM nometabela 
+        ORDER BY valorx                             - apresenta somente 1 vez cada valor mesmo que alguns se repitam
+        
+      - SELECT MIN (campo1) 
+        FROM tabela                               - apresenta o menor valor da coluna 
+        
+      - SELECT MAX (campo1) 
+        FROM [tabela] 
+        WHERE campo1 = 'valorx'                  - pesquisa o maior valor quando campo1 = valorx
+        
+      - SELECT COUNT (campo1) ......                               - informa quantos linhas há no campo1
       - SELECT SUM [...] FROM [...]                                 - soma dos valores da coluna
       - SELECT AVG [...] AS media FROM [...]                        - traz as media dos valores da coluna 
       - SELECT [...] FROM [...] WHERE [...] AND | OR, IN | NOT      - pesquisa valores com condições E, OU, e NÃO 
@@ -88,88 +105,161 @@
 
 ***SELF JOIN***        ----------> (é um metodo para se comparar itens da mesma tabela)
                        
-       - SELECT A.coluna1, B.coluna1 FROM tabela1 A, tabela1 B WHERE A.informação = B.informação - irá retornar todos os campos (EX: todas pessoas que moram e tal região) 
+       - SELECT A.coluna1, B.coluna1 
+         FROM tabela1 A, tabela1 B 
+         WHERE A.informação = B.informação                         - irá retornar todos os campos (EX: todas pessoas que moram e tal região) 
 
 ***INNER JOIN  | JOIN***         ----------> (é a interseção entre duas tabelas ou seja, o que possui o mesmo valor em ambas)
                        
-       - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
+       - SELECT [...] 
+         FROM tabela1 
+         INNER JOIN tabela2 
+              ON tabela1.pk = tabela2.fk                   - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
 
 ***LEFT OUTER JOIN |LEFT JOIN***  ----------> (são todos os valores da primeira tabela + os valores comuns entre a primeira e a segunda)
 
-       - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
+       - SELECT [...] 
+         FROM tabela1 
+         INNER JOIN tabela2 
+              ON tabela1.pk = tabela2.fk                   - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
 ***FULL OUTER JOIN |OUTER JOIN***    ----------> (Join mais completo, pois nos traz todos os valores de tabela, caso nao possua correspondentes ela traz o valor NULL para o valor.
 
-       - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk
+       - SELECT [...] 
+         FROM tabela1 
+         INNER JOIN tabela2 
+              ON tabela1.pk = tabela2.fk
        
 ***RIGHT OUTER JOIN |RIGHT JOIN***                ---------->(são todos os valores da segunda tabela + os valores comuns entre a primeira e a segunda)
 
-       - SELECT [...] FROM tabela1 INNER JOIN tabela2 ON tabela1.pk = tabela2.fk - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
+       - SELECT [...] 
+         FROM tabela1 
+         INNER JOIN tabela2 
+              ON tabela1.pk = tabela2.fk                - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
 ***UNION***           ---------->(realiza a combinação dos resultados de um ou mais SELECT em apenas um, remove dados duplicados)
 
-      - SELECT coluna1(INT), coluna2(VARCHAR) FROM tabela1 UNION SELECT coluna1(INT), coluna2(VARCHAR) FROM tabela2
-      - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - criará uma coluna chamado "type" onde terá o valor cliente, e a coluna nomecompleto onde esta a junção nome+sobrenome
-      - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto FROM [...] UNION SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto FROM [...] - irá colocar a tabela fornecedor pós o cliente
+      - SELECT coluna1(INT), coluna2(VARCHAR) 
+        FROM tabela1 
+        UNION 
+        SELECT coluna1(INT), coluna2(VARCHAR) 
+        FROM tabela2
+        
+      - SELECT 'cliente' AS type , nome + ' ' + sobrenome  AS NomeCompleto 
+        FROM [...] 
+        UNION 
+        SELECT 'fornecedor', nome + ' ' + sobrenome  AS NomeCompleto 
+        FROM [...]                                                             - irá colocar a tabela fornecedor pós o cliente
 
 ***HAVING***                 ---------->(usado para filtar o resultado de um agrupamento)
 
-      - SELECT (..), COUNT(ID) AS quant FROM (..) WHERE [...] <> 'BRASIL' GROUP BY [...]  HAVING COUNT (ID) =>9 
-                     - se executarmos a pesquisa ate o GROUP será feito a contagem e junção de todos os paises DIFERENTES de Brasil, e a função do HAVING e filtrar para aparecer somente paises com numero >= 9  
-      - SELECT (campo1), SUM(campo2) FROM (tabela1) GROUP BY (campo1) HAVING (condição)
+      - SELECT (..), COUNT(ID) AS quant 
+        FROM (..) 
+        WHERE [...] <> 'BRASIL' 
+        GROUP BY [...]  
+        HAVING COUNT (ID) =>9                                 - se executarmos a pesquisa ate o GROUP será feito a contagem e junção de todos os paises DIFERENTES de Brasil, e a função do HAVING e filtrar para aparecer somente paises com numero >= 9  
+      
 
 ***SELECT INTO***            ---------->(usado para inserir informações em uma tabela atraves de uma consulta)                
 
-      - SELECT * INTO NovoNomeTabela FROM [...] WHERE [...] = 'Exemplo' - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
+      - SELECT * INTO NovoNomeTabela 
+        FROM [...] 
+        WHERE [...] = 'Exemplo'                                 - ao realizar a pesquisa os resultados encontrados serão salvos em uma nova tabela com o nome NovoNomeTabela
 
                      
 ***VIEWS***                   ----------> (usado para reaproveitar SELECT facilitando uma proxima consulta, salvando determinada consulta)    
               
-     - CREATE VIEW [...] AS SELECT * FROM [...] WHERE id = 5 - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
-     - SELECT * FROM (nomedaview) - retorna os dados somente dessa view
-     - CREATE OR ALTER VIEW [...] AS SELECT YEAR(vendasdata) AS ano, month(vendasdata) AS mes, day(vendasdata) AS dia, quant * valor AS vendas FROM [...] podendo usar JOIN's
-
+     - CREATE VIEW [...] 
+       AS 
+           SELECT * 
+           FROM [...] 
+           WHERE id = 5                          - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
+ 
 ***PROCEDURES***              
 
-     - SELECT name, modify_date FROM sys.objects WHERE type = 'P' -- 'P' representa stored procedures AND name = 'nome_procedure'; -- verificar ultima atualização/modificação realizad ana procedure
+     - SELECT name, modify_date 
+       FROM sys.objects 
+       WHERE type = 'P'                         -- 'P' representa stored procedures AND name = 'nome_procedure'; -- verificar ultima atualização/modificação realizad ana procedure
                  
 ***TRIGGER***                 ----------> (Uma forma de criar gatilho para determinda situações.   EX: backup, registro em log etc...)
 
-     - CREATE TRIGGER [dbo].[...] ON [dbo].[...] AFTER INSERT, DELETE AS BEGIN (o que irá ocorrer apóso gatilho) - Criação do Trigger que fará alguma ação após ocorrer um INSERT ou DELETE
-     - ALTER TABLE [...] ENABLE TRIGGER [...]- Comando necessario para ativar o TRIGGER
-     - ALTER TABLE [...] DISABLE TRIGGER [...]- Comando necessario para desativar o TRIGGER 
-     - ENABLE TRIGGER ALL ON [...] - ativa todas as TRIGGERS da tabela
-     - DISABLE TRIGGER ALL ON [...] - desativa todas as TRIGGERS da tabela
-     - SELECT * FROM sys.triggers WHERE TYPE = 'TR' - tabela do propio SQL que nos mostra todas as TRIGGERS que possuimos e em quais tabelas
+     - CREATE TRIGGER nome_da_trigger
+           ON nome_da_tabela
+           FOR [AÇÃO]  -- Por exemplo, INSERT, UPDATE, DELETE
+           AS
+           BEGIN
+                -- Corpo da trigger (código SQL a ser executado quando a trigger é acionada)
+           END;
+
+     - SELECT * 
+       FROM sys.triggers 
+       WHERE TYPE = 'TR' - tabela do propio SQL que nos mostra todas as TRIGGERS que possuimos e em quais tabelas
+       
      - DROP TRIGGER IF EXISTS [...]
               
 ***FUNCTIONS***
 
-     - CREATE FUNCTIONS nomefuncao( variaveis ) RETURNS (variavel) AS BEGIN RETURN (EX: variavel1 * variavel3 - variavel3) END; - Criando uma function
+    - CREATE FUNCTION nome_da_funcao
+           (-- Parâmetros de entrada, @parametro1 tipo_de_dado, @parametro2 tipo_de_dado )
+          RETURNS tipo_de_retorno
+          AS
+          BEGIN
+              DECLARE @resultado tipo_de_retorno          
+              -- Lógica da função, os parâmetros e realizar cálculos ou operações aqui
+              RETURN @resultado
+          END;
+
+            
      - SELECT nomefuncao (variavel1, variavel2, variavel3) nomecoluna - Chamando a função e passando os parametros que serão usados na function o resultado sairá na coluna nomecoluna
 
 ***DATEPART***                 ----------> (Função usada para fragmentar uma data)
      
      - DATEPART ("year, day, month, minute, hour, etc....", coluna1)   
+     
      - Possibilidades (https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16)
 
 ***OPERAÇÕES COM STRINGS***  ----------> ex: (LEN contagem de letras), (CONCAT concatenar)
 
-     - SELECT coluna1, SUBSTRING(coluna2, 1 - inicia de onde?, 5 -quantas letras?) FROM tabela - FILTAR LETRAS - irá filtrar 5 letras iniciando da primeira
-     - SELECT coluna1, REPLACE(coluna2, ' 1 ' - busca o caractere 1, ' 2 ' -Substitui por 2) FROM tabela - Substitui caracteres, nesse caso irá procurar o 1 e substituir por 2
+     - SELECT coluna1, 
+       SUBSTRING(coluna2, 1 - inicia de onde?, 5 -quantas letras?) 
+       FROM tabela - FILTAR LETRAS - irá filtrar 5 letras iniciando da primeira
+       
+     - SELECT coluna1, 
+       REPLACE(coluna2, ' 1 ' - busca o caractere 1, ' 2 ' -Substitui por 2) 
+       FROM tabela - Substitui caracteres, nesse caso irá procurar o 1 e substituir por 2
+     
      - Possibilidades ([https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver16))
 
 ***ROW_NUMBER***                 ----------> (Função usada para numerar um determinado resultado)
      
-     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+     - SELECT ROW_NUMBER() 
+            OVER (ORDER BY alguma_coluna) 
+            AS numero_da_linha,coluna1,coluna2 
+            FROM sua_tabela;
 
 ***UNPIVOT***                 ----------> (Função usada para tranformar as colunas em linhas)
      
-     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+    - SELECT coluna_chave, coluna_valores
+      FROM 
+          (SELECT coluna_chave,coluna_origem1, coluna_origem2, ...
+           FROM nome_da_tabela) AS TabelaFonte
+      UNPIVOT 
+              (coluna_valores FOR coluna_destino 
+               IN (coluna_origem1, coluna_origem2, ...)) 
+               AS nomeTabelaUnpivotada;
+
 
 ***PIVOT***                 ----------> (Função usada para tranformar as colunas em linhas)
      
-     - SELECT ROW_NUMBER() OVER (ORDER BY alguma_coluna) AS numero_da_linha,coluna1,coluna2 FROM sua_tabela;
+     - SELECT coluna1, coluna2, ...
+       FROM
+           (SELECT coluna_de_pivot, coluna_para_agregacao, coluna_valor
+            FROM nome_da_tabela) AS TabelaFonte
+       PIVOT
+            (funcao_agregacao(coluna_valor) FOR coluna_de_pivot 
+             IN ([valor1], [valor2], ...)) 
+             AS nomeTabelaPivotada;
+
 
 ***CASE***                 ----------> (Função usada para avaliar uma lista de condiçoes e retornar uma  das opções)
      
