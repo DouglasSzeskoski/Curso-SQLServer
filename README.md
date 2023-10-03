@@ -61,48 +61,74 @@
 ***INSERT , UPDATE***   
                             
       - INSERT into [nometabela] (campo1, …) 
-        VALUES (dado1, …);                          - inserir dados nos campos             
+        VALUES (dado1, …);                                              - inserir dados nos campos             
       
       - UPDATE nometabela 
         SET campo1 = 'dado1', campo2 = 'dado2' 
-        WHERE condição;                             - editar dados de um campo com restrições 
+        WHERE condição;                                                 - editar dados de um campo com restrições 
       
       - UPDATE DAN set coluna1 = coluna2 
         FROM tabela1 
         INNER JOIN tabela2 
              ON tabela1.pk = tabela2.fk 
-        WHERE campo condição                        - fazer UPDATE de uma coluna atraves de um JOIN (sempre usar BEGIN TRANSACTION / COMMIT TRANSACTION)
+        WHERE campo condição                                        - fazer UPDATE de uma coluna atraves de um JOIN (sempre usar BEGIN TRANSACTION / COMMIT TRANSACTION)
 
 ***SELECT***
                                    
       - SELECT * (campo)
-        FROM nometabela;                             - pesquisa de todos os dados  (evitar devido a perfomarce)
+        FROM nometabela;                                            - pesquisa de todos os dados  (evitar devido a perfomarce)
         
 
       - SELECT TOP 10 * 
-        FROM nometabela                             - pesquisa os 10 primeiros valores da tabela
+        FROM nometabela                                            - pesquisa os 10 primeiros valores da tabela
         
       - SELECT DISTINCT campo1 
         FROM nometabela 
-        ORDER BY valorx                             - apresenta somente 1 vez cada valor mesmo que alguns se repitam
+        ORDER BY valorx                                            - apresenta somente 1 vez cada valor mesmo que alguns se repitam
         
       - SELECT MIN (campo1) 
-        FROM tabela                               - apresenta o menor valor da coluna 
+        FROM tabela                                                - apresenta o menor valor da coluna 
         
       - SELECT MAX (campo1) 
         FROM [tabela] 
-        WHERE campo1 = 'valorx'                  - pesquisa o maior valor quando campo1 = valorx
+        WHERE campo1 = 'valorx'                                   - pesquisa o maior valor quando campo1 = valorx
         
-      - SELECT COUNT (campo1) ......                               - informa quantos linhas há no campo1
-      - SELECT SUM [...] FROM [...]                                 - soma dos valores da coluna
-      - SELECT AVG [...] AS media FROM [...]                        - traz as media dos valores da coluna 
-      - SELECT [...] FROM [...] WHERE [...] AND | OR, IN | NOT      - pesquisa valores com condições E, OU, e NÃO 
-      - SELECT [...] FROM [...] WHERE campo1 BETWEEN 10 AND 20      - todos os valores entre 10 e 20 (BETWEEN) inclusive 10 e 20
-      - SELECT [...] FROM [...] WHERE campo1 LIKE 'Ca%'             - todos os valores que comecem com as letras Ca (não importa a proxima letra) 
-      - SELECT [...] FROM [...] WHERE campo1 LIKE '%Ca%'            - todos os valores que contenha as letras Ca (não importa onde)                        - 
-      - SELECT [...] FROM [...] WHERE campo1 LIKE 'Ca_'             - todos os valores que contenha apenas as letras Ca e mais um caractere 
-      - SELECT [...] FROM [...] WHERE campo1 IS NULL | IS NOT NULL  - todos os valores que possuam valor nulo | valores não nulos 
-      - SELECT [...], COUNT (ID) FROM [...] GROUP BY [...]          - vai contar quantos ID possuem valores iguais 
+      - SELECT COUNT (campo1) ......                              - informa quantos linhas há no campo1
+      
+      - SELECT SUM [...] 
+        FROM [...]                                                - soma dos valores da coluna
+      
+      - SELECT AVG [...] AS media 
+        FROM [...]                                                - traz as media dos valores da coluna 
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE [...] 
+        AND | OR, IN | NOT                                       - pesquisa valores com condições E, OU, e NÃO 
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE campo1 BETWEEN 10 AND 20                          - todos os valores entre 10 e 20 (BETWEEN) inclusive 10 e 20
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE campo1 LIKE 'Ca%'                                 - todos os valores que comecem com as letras Ca (não importa a proxima letra) 
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE campo1 LIKE '%Ca%'                                - todos os valores que contenha as letras Ca (não importa onde)                        - 
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE campo1 LIKE 'Ca_'                                - todos os valores que contenha apenas as letras Ca e mais um caractere 
+      
+      - SELECT [...] 
+        FROM [...] 
+        WHERE campo1 IS NULL | IS NOT NULL                     - todos os valores que possuam valor nulo | valores não nulos 
+      
+      - SELECT [...], COUNT (ID) 
+        FROM [...] 
+        GROUP BY [...]                                          - vai contar quantos ID possuem valores iguais 
 
 ***SELF JOIN***        ----------> (é um metodo para se comparar itens da mesma tabela)
                        
@@ -115,14 +141,14 @@
        - SELECT [...] 
          FROM tabela1 
          INNER JOIN tabela2 
-              ON tabela1.pk = tabela2.fk                   - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
+              ON tabela1.pk = tabela2.fk                           - retorna os valores iguais em ambas as tabelas que tiverem ligadas atraves de primary key e foreign key 
 
 ***LEFT OUTER JOIN |LEFT JOIN***  ----------> (são todos os valores da primeira tabela + os valores comuns entre a primeira e a segunda)
 
        - SELECT [...] 
          FROM tabela1 
          INNER JOIN tabela2 
-              ON tabela1.pk = tabela2.fk                   - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
+              ON tabela1.pk = tabela2.fk                          - retorna todos os valores da primeira tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
 ***FULL OUTER JOIN |OUTER JOIN***    ----------> (Join mais completo, pois nos traz todos os valores de tabela, caso nao possua correspondentes ela traz o valor NULL para o valor.
 
@@ -136,7 +162,7 @@
        - SELECT [...] 
          FROM tabela1 
          INNER JOIN tabela2 
-              ON tabela1.pk = tabela2.fk                - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
+              ON tabela1.pk = tabela2.fk                         - retorna todos os valores da segunda tabela = interseção que tiverem ligadas atraves de primary key e foreign key
 
 ***UNION***           ---------->(realiza a combinação dos resultados de um ou mais SELECT em apenas um, remove dados duplicados)
 
@@ -174,7 +200,7 @@
        AS 
            SELECT * 
            FROM [...] 
-           WHERE id = 5                          - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
+           WHERE id = 5                                        - será criado uma view com o nome escolhido onde irá conter somente os valores com id = 5
  
 ***PROCEDURES***              
 
